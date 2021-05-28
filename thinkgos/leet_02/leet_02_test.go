@@ -22,3 +22,17 @@ func TestDifference(t *testing.T) {
 	require.Equal(t, gotAdd, wantAdd)
 	require.Equal(t, gotDel, wantDel)
 }
+
+func BenchmarkDifferent(b *testing.B) {
+	var s1 = []int{1, 2, 3, 4, 5}
+	var s2 = []int{2, 3, 7, 8}
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		ss1 := New(s1...)
+		ss2 := New(s2...)
+		_ = ss1.Difference(ss2).List()
+		_ = ss2.Difference(ss1).List()
+	}
+	b.StopTimer()
+}
