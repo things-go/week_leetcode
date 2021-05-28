@@ -81,6 +81,97 @@ flat(arr2,2); //输出 [1, 2, 3, 4, 5, 6]
 以s1为基础
 ```
 
+### 3.  扁平数组转化树形结构, 要求遍历最大次数为O(2n), 空间复杂度和内存利用率越低越好
+
+```js
+输入: arr = [
+    { id: 1, pid: 0, name: '超然科技' }, 
+    { id: 2, pid: 0, name: '低速科技' },
+    { id: 3, pid: 1, name: '科研中心' },
+    { id: 4, pid: 1, name: '运营中心' },
+    { id: 5, pid: 2, name: '吃喝院' }, 
+    { id: 6, pid: 2, name: '研究院' },
+    { id: 7, pid: 3, name: 'aa' }, 
+    { id: 8, pid: 3, name: 'bb' },
+    { id: 9, pid: 4, name: 'cc' },
+    { id: 10, pid: 5, name: 'dd' },
+    { id: 11, pid: 6, name: 'ee' }
+    ],
+输出: tree = [
+    { 
+        id: 1, 
+        pid: 0, 
+        name: '超然科技',
+        children: [
+            { 
+                id: 3,
+                pid: 1, 
+                name: '科研中心',
+                children: [
+                    { 
+                        id: 7, 
+                        pid: 3, 
+                        name: 'aa',
+                        children:[]
+                    },
+                    { 
+                        id: 8,
+                        pid: 3, 
+                        name: 'bb', 
+                        children:[]
+                    },
+                ]
+            },
+            { 
+                id: 4, 
+                pid: 1, 
+                name: '运营中心',
+                children: [
+                    { 
+                        id: 9, 
+                        pid: 4, 
+                        name: 'cc', 
+                        children:[]
+                    },
+                ]
+            },
+        ]
+    },
+    { 
+        id: 2, 
+        pid: 0, 
+        name: '低速科技',
+        children: [
+            { 
+                id: 5, 
+                pid: 2, 
+                name: '吃喝院',
+                children: [
+                    { 
+                        id: 10, 
+                        pid: 5, 
+                        name: 'dd', 
+                        children:[]
+                    },
+                ]
+            },
+            { 
+                id: 6, 
+                pid: 2, 
+                name: '研究院',
+                children: [
+                    { 
+                        id: 11, 
+                        pid: 6, 
+                        name: 'ee', 
+                        children:[],
+                    }
+                ]
+            },
+        ]
+    },
+]
+```
 
 
 
