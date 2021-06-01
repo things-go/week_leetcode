@@ -1,0 +1,34 @@
+<!--
+ * @Author: one
+ * @Date: 2021-06-01 21:59:25
+ * @LastEditTime: 2021-06-01 22:10:56
+ * @FilePath: \undefinedc:\Users\Asus\Desktop\week_leetcode\thinkgos\leet_02\leet_02.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function getDiffArr(arr1, arr2) {
+        return [...arr1, ...arr2].filter((item, idx, arr) => {
+          return arr.indexOf(item) === arr.lastIndexOf(item);
+        });
+      }
+      let arr1 = [1, 2, 3],
+        arr2 = [2, 3, 4],
+        add = [],
+        del = [];
+      let diffArr = getDiffArr(arr1, arr2);
+      diffArr.filter((item, idx) => {
+        arr2.includes(item) ? add.push(item) : del.push(item);
+      });
+      console.log("add", add);
+      console.log("del", del);
+    </script>
+  </body>
+</html>
