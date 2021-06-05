@@ -30,3 +30,9 @@ func TestUniqueSortList(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkUniqueSortList(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		UniqueSortList([]int{1, 1, 3, 2, 5, 5, 6, 3, 2, 7})
+	}
+}

@@ -29,3 +29,9 @@ func TestSingleNumber(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkSingleNumber(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		SingleNumber([]int{6, 1, 2, 1, 2, 5, 7, 5, 3, 7, 6})
+	}
+}
