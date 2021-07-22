@@ -55,11 +55,11 @@ jobs:
 
       - name: Unit test
         run: |
-          go test -v -race -coverprofile=coverage -covermode=atomic ./...
+          cd thinkgos && go test -v -race -coverprofile=coverage -covermode=atomic ./...
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
-          files: ./coverage
+          files: ./thinkgos/coverage
           flags: unittests
           verbose: true
