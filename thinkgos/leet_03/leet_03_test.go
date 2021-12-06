@@ -32,3 +32,15 @@ func BenchmarkTree(b *testing.B) {
 		toTree(arr, 0)
 	}
 }
+
+func TestTree2(t *testing.T) {
+	v, err := json.MarshalIndent(toTree2(arr, 0), " ", "  ")
+	require.NoError(t, err)
+	t.Logf(string(v))
+}
+
+func BenchmarkTree2(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		toTree2(arr, 0)
+	}
+}
