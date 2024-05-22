@@ -1,14 +1,30 @@
 package leet_03
 
-type Node interface {
-	GetId() int
-	GetPid() int
-	AppendChildren(Node)
+import (
+	"golang.org/x/exp/constraints"
+)
+
+type NodeSlice[T constraints.Ordered, E any] []Node[T, E]
+
+func (nodes NodeSlice[T, E]) Len() int {
+	return len(nodes)
+}
+func (nodes NodeSlice[T, E]) Less(i, j int) bool {
+	return nodes[i].GetId() < nodes[j].GetId()
+}
+func (nodes NodeSlice[T, E]) Swap(i, j int) {
+	nodes[i], nodes[j] = nodes[j], nodes[i]
 }
 
-func IntoTree[T Node](rows []T, rootPid int) []T {
-	var root []T
-	nodes := make(map[int]T, len(rows))
+type Node[T constraints.Ordered, E any] interface {
+	GetId() T
+	GetPid() T
+	AppendChildren(E)
+}
+
+func IntoTree[T constraints.Ordered, E Node[T, E]](rows []E, rootPid T) []E {
+	var root []E
+	nodes := make(map[T]E, len(rows))
 	for _, v := range rows {
 		node := v
 		id := node.GetId()
@@ -38,6 +54,6 @@ func (d *Dept) GetPid() int {
 	return d.Pid
 }
 
-func (d *Dept) AppendChildren(v Node) {
-	d.Children = append(d.Children, v.(*Dept))
+func (d *Dept) AppendChildren(v *Dept) {
+	d.Children = append(d.Children, v)
 }
