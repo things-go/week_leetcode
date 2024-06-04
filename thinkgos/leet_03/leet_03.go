@@ -24,6 +24,7 @@ type Node[T constraints.Ordered, E any] interface {
 
 func IntoTree[T constraints.Ordered, E Node[T, E]](rows []E, rootPid T) []E {
 	var root []E
+
 	nodes := make(map[T]E, len(rows))
 	for _, v := range rows {
 		node := v

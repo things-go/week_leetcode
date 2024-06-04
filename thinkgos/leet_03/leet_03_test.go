@@ -25,6 +25,8 @@ func TestTree(t *testing.T) {
 	v, err := json.MarshalIndent(IntoTree(arr, 0), " ", "  ")
 	require.NoError(t, err)
 	t.Logf(string(v))
+
+	
 }
 
 func BenchmarkTree(b *testing.B) {

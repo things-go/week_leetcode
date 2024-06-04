@@ -1,4 +1,4 @@
-# leetcode weekly
+# weekly leetcode
 
 [![GoDoc](https://godoc.org/github.com/things-go/week_leetcode?status.svg)](https://godoc.org/github.com/things-go/week_leetcode)
 [![Go.Dev reference](https://img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white)](https://pkg.go.dev/github.com/things-go/week_leetcode?tab=doc)
